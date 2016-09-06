@@ -156,6 +156,68 @@ void Clustering::initialize_utri(cv::Mat& D)
         
     }
 }
+void Clustering::initialize_tuples(const std::string ifile)
+{
+    
+    cv::Mat D;
+    read_tuple(ifile, D);
+    num_samples = D.rows;
+    init_singletons(cluster_ids, num_samples);
+    
+//    std::vector<float> i_vals;
+    cv::Mat icol;
+    D.col(0).copyTo(icol);
+    std::vector<int> i_vals(icol.begin<float>(), icol.begin<float>() + icol.size().height);
+    
+    auto last = std::unique(i_vals.begin(), i_vals.end());
+    i_vals.erase(last, i_vals.end());
+    
+    int num_i = (int)i_vals.size();
+    
+    Cluster Cc;
+    int offset = 0;
+    for (int x = 0; x < num_i; x++)
+    {
+        int cur_i = i_vals.at(x);
+        
+        cv::Mat idx, mask;
+        cv::Mat dvec;
+        cv::transpose(D.col(0), dvec);
+        cv::compare(dvec, cur_i, mask, cv::CMP_EQ);
+        mask.convertTo(mask,CV_8UC1);
+//        std::cout << mask;
+        
+        cv::findNonZero(mask, idx);
+        std::cout << idx;
+        // convert type Mat to stl vector
+        std::vector<int> m_row=std::vector<int>(idx.begin<int>(), idx.end<int>());
+        int n_to_merge = (int)m_row.size();
+        
+        std::vector<dPoint1f> nlist = std::vector<dPoint1f>();
+        for(int y = 0; y < n_to_merge; y++)
+        {
+            // index the jth index of the D matrix's upper triangle
+            int j = (int)D.col(1).at<float>(m_row.at(y));
+            float dis = D.col(2).at<float>(m_row.at(y));
+            nlist.push_back(dPoint1f(j, dis));
+//            nlist.push_back(dPoint1f(j, dis));
+            
+        }
+        
+
+        // instantiate samp with index x, (true) is_root, height 0 (base of tree),
+        // and Neighbors
+        Sample samp (x,true,0, Neighbors (x,nlist));
+        // assign Cluster w ID x (note, cluster_ids(x) == x, as each sample
+        // starts of as a singleton, i.e., each sample in itself is a cluster)
+        // and containing sample samp
+        Cc= Cluster(cluster_ids.at(x), samp);
+        add_cluster(Cc);
+    }
+}
+
+
+
 
 void Clustering::add_cluster(Cluster& C)
 {

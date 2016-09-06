@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		935E3BF61D7E46AC00CDC028 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3BF51D7E46AC00CDC028 /* main.cpp */; };
+		935E3C091D7E46CE00CDC028 /* Cluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3BFE1D7E46CE00CDC028 /* Cluster.cpp */; };
+		935E3C0A1D7E46CE00CDC028 /* Clustering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3C001D7E46CE00CDC028 /* Clustering.cpp */; };
+		935E3C0B1D7E46CE00CDC028 /* ClusterUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3C021D7E46CE00CDC028 /* ClusterUtils.cpp */; };
+		935E3C0C1D7E46CE00CDC028 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3C051D7E46CE00CDC028 /* main.cpp */; };
+		935E3C0D1D7E46CE00CDC028 /* Sample.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3C061D7E46CE00CDC028 /* Sample.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +28,16 @@
 
 /* Begin PBXFileReference section */
 		935E3BF21D7E46AC00CDC028 /* Agglomerative_Clustering */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Agglomerative_Clustering; sourceTree = BUILT_PRODUCTS_DIR; };
-		935E3BF51D7E46AC00CDC028 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		935E3BFE1D7E46CE00CDC028 /* Cluster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cluster.cpp; path = ../../cpp/Cluster.cpp; sourceTree = "<group>"; };
+		935E3BFF1D7E46CE00CDC028 /* Cluster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Cluster.hpp; path = ../../cpp/Cluster.hpp; sourceTree = "<group>"; };
+		935E3C001D7E46CE00CDC028 /* Clustering.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Clustering.cpp; path = ../../cpp/Clustering.cpp; sourceTree = "<group>"; };
+		935E3C011D7E46CE00CDC028 /* Clustering.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Clustering.hpp; path = ../../cpp/Clustering.hpp; sourceTree = "<group>"; };
+		935E3C021D7E46CE00CDC028 /* ClusterUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ClusterUtils.cpp; path = ../../cpp/ClusterUtils.cpp; sourceTree = "<group>"; };
+		935E3C031D7E46CE00CDC028 /* ClusterUtils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ClusterUtils.hpp; path = ../../cpp/ClusterUtils.hpp; sourceTree = "<group>"; };
+		935E3C041D7E46CE00CDC028 /* cxxopts.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = cxxopts.hpp; path = ../../cpp/cxxopts.hpp; sourceTree = "<group>"; };
+		935E3C051D7E46CE00CDC028 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = ../../cpp/main.cpp; sourceTree = "<group>"; };
+		935E3C061D7E46CE00CDC028 /* Sample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sample.cpp; path = ../../cpp/Sample.cpp; sourceTree = "<group>"; };
+		935E3C071D7E46CE00CDC028 /* Sample.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Sample.hpp; path = ../../cpp/Sample.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +70,16 @@
 		935E3BF41D7E46AC00CDC028 /* Agglomerative_Clustering */ = {
 			isa = PBXGroup;
 			children = (
-				935E3BF51D7E46AC00CDC028 /* main.cpp */,
+				935E3BFE1D7E46CE00CDC028 /* Cluster.cpp */,
+				935E3BFF1D7E46CE00CDC028 /* Cluster.hpp */,
+				935E3C001D7E46CE00CDC028 /* Clustering.cpp */,
+				935E3C011D7E46CE00CDC028 /* Clustering.hpp */,
+				935E3C021D7E46CE00CDC028 /* ClusterUtils.cpp */,
+				935E3C031D7E46CE00CDC028 /* ClusterUtils.hpp */,
+				935E3C041D7E46CE00CDC028 /* cxxopts.hpp */,
+				935E3C051D7E46CE00CDC028 /* main.cpp */,
+				935E3C061D7E46CE00CDC028 /* Sample.cpp */,
+				935E3C071D7E46CE00CDC028 /* Sample.hpp */,
 			);
 			path = Agglomerative_Clustering;
 			sourceTree = "<group>";
@@ -118,7 +140,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				935E3BF61D7E46AC00CDC028 /* main.cpp in Sources */,
+				935E3C0B1D7E46CE00CDC028 /* ClusterUtils.cpp in Sources */,
+				935E3C0A1D7E46CE00CDC028 /* Clustering.cpp in Sources */,
+				935E3C091D7E46CE00CDC028 /* Cluster.cpp in Sources */,
+				935E3C0D1D7E46CE00CDC028 /* Sample.cpp in Sources */,
+				935E3C0C1D7E46CE00CDC028 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +235,24 @@
 		935E3BFA1D7E46AC00CDC028 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videostab",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -216,6 +260,24 @@
 		935E3BFB1D7E46AC00CDC028 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-lopencv_calib3d",
+					"-lopencv_core",
+					"-lopencv_features2d",
+					"-lopencv_flann",
+					"-lopencv_highgui",
+					"-lopencv_imgproc",
+					"-lopencv_ml",
+					"-lopencv_objdetect",
+					"-lopencv_photo",
+					"-lopencv_stitching",
+					"-lopencv_superres",
+					"-lopencv_ts",
+					"-lopencv_video",
+					"-lopencv_videostab",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -239,6 +301,7 @@
 				935E3BFB1D7E46AC00CDC028 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
