@@ -83,3 +83,46 @@ void set_cluster_ids(std::vector<int>& cluster_ids){
     
 }
 
+
+
+/**
+ *
+ */
+void read_tuple(const std::string filename, cv::Mat& data) {
+    
+    std::ifstream inputfile(filename);
+    std::string current_line;
+    // vector allows you to add data without knowing the exact size beforehand
+    std::vector<std::vector<float> > all_data;
+    int counter = 1;
+    getline(inputfile, current_line);   // read/ skip header
+    // Start reading lines as long as there are lines in the file
+    while(getline(inputfile, current_line)){
+        // Now inside each line we need to seperate the cols
+        std::vector<float> values;
+        std::stringstream temp(current_line);
+        std::string single_value;
+        while(getline(temp,single_value,',')){
+            // convert the string element to a integer value
+            values.push_back(std::stof(single_value.c_str()));
+        }
+        // add the row to the complete data vector
+        all_data.push_back(values);
+        counter++;
+        
+    }
+    
+    int nrows = (int)all_data.size();
+    
+    // Now add all the data into a Mat element
+    data = cv::Mat1f(nrows, (int)all_data[0].size());
+    
+    // Loop over vectors and add the data
+    for(int rows = 0; rows < nrows; rows++){
+        for(int cols= 0; cols< (int)all_data[0].size(); cols++){
+            data.at<float>(rows,cols) = all_data[rows][cols];
+        }
+    }
+    
+    //    cout << "M = "<< endl << " "  << data << endl << endl;
+}

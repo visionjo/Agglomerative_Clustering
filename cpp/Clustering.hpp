@@ -21,6 +21,7 @@ public:
     /* Preparing Distance Matrix */
     void initialize(cv::Mat& D);
     void initialize_utri(cv::Mat& D);
+    void initialize_tuples(const std::string ifile);
     std::vector<dPoint1f> parse_sample_distances(cv::Mat& c_merge, cv::Mat& dis_vec, int x, int offset);
 //    void parse_dMatrix(cv::Mat&);
     

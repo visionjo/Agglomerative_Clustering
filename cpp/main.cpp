@@ -12,15 +12,6 @@
  * Copyright © 2016 Robinson, Joseph. All rights reserved.
  *
  */
-/* To calculate the final grade, we sum all the weighted midterm and homework scores
- and then divide by the number of scores to assign a percentage.  This percentage is
- used to calculate a letter grade. */
-// To generate a random item, we're going to do the following:
-// 1) Put all of the items of the desired rarity on a list
-// 2) Calculate a probability for each item based on level and weight factor
-// 3) Choose a random number
-// 4) Figure out which item that random number corresponds to
-// 5) Return the appropriate item
 
 #include <time.h>
 #include "Clustering.hpp"
@@ -133,27 +124,32 @@ void agglomerative_demo(){
     
     
     /* Load Data */
-    if (constants::DO_DEBUG)
-        cout << "Agglomerative Clustering Demo (BEGIN)!\n\n";
+//    if (constants::DO_DEBUG)
+//        cout << "Agglomerative Clustering Demo (BEGIN)!\n\n";
     
-    read_csv(ifile, dmatrix, -1);
-    if (constants::DO_DEBUG)
-        cout << "Loaded " << dmatrix.rows << " samples to cluster.\n";
+//    read_csv(ifile, dmatrix, -1);
+
     
     
     string ref_name = "Agglomerative Clustering Demo";
     
     /* Clustering object C is*/
     Clustering C;
+//    C.read_tuples(ifile, dmatrix);
+//    
+//    if (constants::DO_DEBUG)
+//        cout << "Loaded " << dmatrix.rows << " samples to cluster.\n";
+    
     C.set_reference_name(ref_name);
     C.set_linkage_criteria(ltype); // set to single-link
-    C.initialize_utri(dmatrix);
+     C.initialize_tuples(ifile);
+//    C.initialize_utri(dmatrix);
     if (constants::DO_DEBUG)
         cout << C;
     
     std::vector<int> cluster_ids;
+    C.single_link(k, cluster_ids);
     
-    C.complete_link(k, cluster_ids);
     
     if (constants::DO_DEBUG){
         for (int x = 0; x < cluster_ids.size(); x++){

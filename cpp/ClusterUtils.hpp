@@ -129,4 +129,5 @@ std::vector<size_t> sort_indices(std::vector<float> &v);
 void init_singletons(std::vector<int>&, int);
 void set_cluster_ids(std::vector<int>& cluster_ids);
 std::vector<int> unique(const cv::Mat& input, bool sort = false);
+void read_tuple(const std::string filename, cv::Mat& data);
 #endif
