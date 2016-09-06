@@ -54,7 +54,10 @@ for x = 1:(nrows-1)
        counter = counter + 1;
    end
 end
-
+tmatrix=cell2mat(tuple)';
+clear tuple;
+ttable = array2table(tmatrix,'VariableNames',{'i' 'j' 'd'});
+clear tmatrix;
 %% write csv file
-csvwrite(fpath,tuple);
+writetable(ttable, fpath,'Delimiter',',');
 end
