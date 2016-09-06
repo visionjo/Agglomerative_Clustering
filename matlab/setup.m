@@ -4,7 +4,7 @@ function varargout =  setup()
 %           - adds directories to path.
 %
 %     AUTHOR    : Joseph Robinson
-%     DATE      : July-2015
+%     DATE      : July-2016
 %     Revision  : 1.0
 %     DEVELOPED : 2015b
 %     FILENAME  : setup.m
