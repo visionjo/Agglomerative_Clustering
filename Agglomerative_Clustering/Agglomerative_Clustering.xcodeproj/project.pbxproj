@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931B15901D7F58B200988584 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 931B158F1D7F58B200988584 /* README.md */; };
 		935E3C091D7E46CE00CDC028 /* Cluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3BFE1D7E46CE00CDC028 /* Cluster.cpp */; };
 		935E3C0A1D7E46CE00CDC028 /* Clustering.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3C001D7E46CE00CDC028 /* Clustering.cpp */; };
 		935E3C0B1D7E46CE00CDC028 /* ClusterUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 935E3C021D7E46CE00CDC028 /* ClusterUtils.cpp */; };
@@ -27,6 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		931B158F1D7F58B200988584 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../../README.md; sourceTree = "<group>"; };
 		935E3BF21D7E46AC00CDC028 /* Agglomerative_Clustering */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Agglomerative_Clustering; sourceTree = BUILT_PRODUCTS_DIR; };
 		935E3BFE1D7E46CE00CDC028 /* Cluster.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Cluster.cpp; path = ../../cpp/Cluster.cpp; sourceTree = "<group>"; };
 		935E3BFF1D7E46CE00CDC028 /* Cluster.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Cluster.hpp; path = ../../cpp/Cluster.hpp; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		935E3BF41D7E46AC00CDC028 /* Agglomerative_Clustering */ = {
 			isa = PBXGroup;
 			children = (
+				931B158F1D7F58B200988584 /* README.md */,
 				935E3BFE1D7E46CE00CDC028 /* Cluster.cpp */,
 				935E3BFF1D7E46CE00CDC028 /* Cluster.hpp */,
 				935E3C001D7E46CE00CDC028 /* Clustering.cpp */,
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931B15901D7F58B200988584 /* README.md in Sources */,
 				935E3C0B1D7E46CE00CDC028 /* ClusterUtils.cpp in Sources */,
 				935E3C0A1D7E46CE00CDC028 /* Clustering.cpp in Sources */,
 				935E3C091D7E46CE00CDC028 /* Cluster.cpp in Sources */,

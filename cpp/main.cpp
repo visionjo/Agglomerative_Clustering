@@ -35,6 +35,7 @@ void agglomerative_demo();
 
 string ifile;
 string ofile;
+string ifile_format;
 string odir;
 string linktype;
 int ltype = 1;
@@ -54,6 +55,7 @@ int main(int argc, char* argv[])
     {
         options.add_options("Requirements")
         ("i,ifile", "Input CSV file containing distance matrix", cxxopts::value<string>(ifile), "    FILE")
+        ("f,format", "Format of input file (tuple (or T) or dmatrix (or D))", cxxopts::value<string>(ifile)->default_value("T"), "    FILE FORMAT")
         ("o,ofile", "Output filepath", cxxopts::value<string>(ofile), "    FILE");
         
         options.add_options("Optional")
@@ -93,8 +95,11 @@ int main(int argc, char* argv[])
         return 0;
     }
     
-    
+    /**
+     * Check linkage type and call function accordingly.
+     */
     if (ltype == 0 || ltype == 1){
+        // if complete or single- link is set as linkage criteria
         if (ltype == 0)
         {
             cout << "Complete-link is buggy. Use single-link.\n";
@@ -105,6 +110,7 @@ int main(int argc, char* argv[])
         agglomerative_demo();
     }
     else if(ltype == 2){
+        // if single-pass is linkage criteria
         app_agglomerative_demo();}
     else{
             cout << "Linkage criteria " << ltype << " is undefined." << endl;
@@ -122,30 +128,35 @@ int main(int argc, char* argv[])
 void agglomerative_demo(){
     Mat dmatrix;
     
-    
-    /* Load Data */
-//    if (constants::DO_DEBUG)
-//        cout << "Agglomerative Clustering Demo (BEGIN)!\n\n";
-    
-//    read_csv(ifile, dmatrix, -1);
-
-    
+    if (constants::DO_DEBUG)
+        cout << "Agglomerative (Single Link) Clustering Demo (END)!\n\n";
     
     string ref_name = "Agglomerative Clustering Demo";
     
     /* Clustering object C is*/
     Clustering C;
-//    C.read_tuples(ifile, dmatrix);
-//    
-//    if (constants::DO_DEBUG)
-//        cout << "Loaded " << dmatrix.rows << " samples to cluster.\n";
-    
     C.set_reference_name(ref_name);
     C.set_linkage_criteria(ltype); // set to single-link
-     C.initialize_tuples(ifile);
-//    C.initialize_utri(dmatrix);
-    if (constants::DO_DEBUG)
-        cout << C;
+    
+    /**
+     * Depending on the file format of input, i.e., whether input is set of tuples of D matrix.
+     */
+    if (strcmp(ifile_format.c_str(), "D") || strcmp(ifile_format.c_str(), "dmatrix"))
+    {   // input file format is distance matrix (i.e., NxN)
+        if (constants::DO_DEBUG)
+            cout << "Parsing D matrix: " << ifile << endl << endl;
+        
+        // read distance matrix
+        read_csv(ifile, dmatrix, -1);
+        if (constants::DO_DEBUG)
+            cout << "Loaded " << dmatrix.rows << " samples to cluster.\n";
+        
+        C.initialize_utri(dmatrix);
+    }else{
+        if (constants::DO_DEBUG)
+            cout << "Parsing tuples: " << ifile << endl << endl;
+        C.initialize_tuples(ifile);
+    }
     
     std::vector<int> cluster_ids;
     C.single_link(k, cluster_ids);
@@ -156,9 +167,14 @@ void agglomerative_demo(){
             cout<< "[" << x << "]\t " << cluster_ids.at(x) << endl;
         }
     }
+    if (constants::DO_DEBUG)
+        cout << "writing cluster IDs to file: " << ofile << endl << endl;
+    
     writeVecToFile(cluster_ids, ofile);
     
-    //    
+    if (constants::DO_DEBUG)
+        cout << "Agglomerative (Single Link) Clustering Demo (END)!\n\n";
+
 }
 /**
  * Demo of doing transitive merging through a single pass.
@@ -167,11 +183,11 @@ void app_agglomerative_demo(){
     Mat dmatrix;
     /* Load Data */
     if (constants::DO_DEBUG)
-        cout << "Approximate Agglomerative Clustering Demo (BEGIN)!\n\n";
+        cout << "Agglomerative (Single Pass) Clustering Demo (BEGIN)!\n\n";
     
     // write distances estimated via ADC to file
     read_csv(ifile, dmatrix, -1);        // read training data
-    //    vector<float> temp = dmatrix.row(0);
+
     if (constants::DO_DEBUG)
         cout << "Loaded " << dmatrix.rows << " samples to cluster.\n";
     
@@ -187,7 +203,7 @@ void app_agglomerative_demo(){
     
     
     if (constants::DO_DEBUG)
-        cout << "Rank Order Clustering Demo (END)!\n\n";
+        cout << "Agglomerative (Single Pass) Clustering Demo (END)!\n\n";
     
     
 }
@@ -237,7 +253,9 @@ static void print_help(const int nargs, const string name, cxxopts::Options opti
     
     cout << "Also equivalent:" << endl << "\t" << name;
     cout << " -i <DATADIR>/distance_matrix.csv -d <OUTBIN> -o";
-    cout << " cluster_ids.txt -l 1 -k 4" << endl << endl;
+    cout << " cluster_ids.txt -l 1 -f D -k 4" << endl << endl;
+    cout << " -i <DATADIR>/tuples.csv -d <OUTBIN> -o";
+    cout << " cluster_ids.txt -l 1 -f T -k 4" << endl << endl;
     
     cout << "Note, command line arguments can be passed in in any order. However, flags are required; else, the input argument will be ignored" << endl << endl;
     for(int x = 0; x < 18; x++){
