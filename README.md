@@ -1,12 +1,6 @@
-STR Hierarchical Agglomerative Clustering (STR-HAC) library
+Hierarchical Agglomerative Clustering library
 ============================================================
 MATLAB and C++ tools for agglomerative clustering.
-
-ROJECT INFO
-============
-
-Systems & Technology Research
-Janus Program <janus@stresearch.com>
 
 Version: 1.0
 Date:    6 September 2016
